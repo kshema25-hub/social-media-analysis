@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Social Media Analytics Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Social Media Analytics Platform</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/users">Users</a>
+            <a href="/posts">Posts</a>
+            <a href="/analytics">Analytics</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Top Posters</h2>
+            <div class="analytics-grid">
+                {% for user in top_posters %}
+                <div class="analytics-card">
+                    <h3>{{ user.username }}</h3>
+                    <p>{{ user.post_count }} posts</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section>
+            <h2>Most Liked Posts</h2>
+            <div class="analytics-grid">
+                {% for post in top_liked %}
+                <div class="analytics-card">
+                    <h3>{{ post.username }}</h3>
+                    <p>{{ post.content[:50] }}...</p>
+                    <p>{{ post.like_count }} likes</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Social Media Analytics Platform</p>
+    </footer>
+</body>
+</html>

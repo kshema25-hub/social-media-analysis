@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - Social Media Analytics Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Social Media Analytics Platform</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/users">Users</a>
+            <a href="/posts">Posts</a>
+            <a href="/analytics">Analytics</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>All Users</h2>
+            <div class="users-grid">
+                {% for user in users %}
+                <div class="user-card">
+                    <h3>{{ user.username }}</h3>
+                    <p>Email: {{ user.email }}</p>
+                    <small>Joined: {{ user.created_at }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Social Media Analytics Platform</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Analytics Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Social Media Analytics Platform</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/users">Users</a>
+            <a href="/posts">Posts</a>
+            <a href="/analytics">Analytics</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="stats">
+            <h2>Platform Statistics</h2>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <h3>Total Users</h3>
+                    <p>{{ stats.total_users }}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Posts</h3>
+                    <p>{{ stats.total_posts }}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Likes</h3>
+                    <p>{{ stats.total_likes }}</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Comments</h3>
+                    <p>{{ stats.total_comments }}</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="recent-posts">
+            <h2>Recent Posts</h2>
+            <div class="posts-grid">
+                {% for post in posts %}
+                <div class="post-card">
+                    <h3>{{ post.username }}</h3>
+                    <p>{{ post.content }}</p>
+                    <small>{{ post.created_at }}</small>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Social Media Analytics Platform</p>
+    </footer>
+</body>
+</html>
